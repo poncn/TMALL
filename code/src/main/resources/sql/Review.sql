@@ -1,0 +1,10 @@
+-- auto Generated on 2019-09-23 13:45:43 
+-- DROP TABLE IF EXISTS `review`; 
+CREATE TABLE review(
+    `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键',
+    `content` VARCHAR(50) NOT NULL DEFAULT '' COMMENT 'content',
+    `uid` BIGINT NOT NULL DEFAULT -1 COMMENT 'uid',
+    `pid` BIGINT NOT NULL DEFAULT -1 COMMENT 'pid',
+    `create_date` DATETIME NOT NULL DEFAULT '1000-01-01 00:00:00' COMMENT 'createDate',
+    PRIMARY KEY (`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT 'review';

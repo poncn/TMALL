@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.poncn.dao.ProductDao">
+
+<!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.poncn.entity.Product">
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="sub_title" property="subTitle"/>
+        <result column="original_price" property="originalPrice"/>
+        <result column="promote_price" property="promotePrice"/>
+        <result column="stock" property="stock"/>
+        <result column="cid" property="cid"/>
+        <result column="create_date" property="createDate"/>
+    </resultMap>
+
+<!--auto generated Code-->
+    <sql id="all_column">
+        id,
+        name,
+        sub_title,
+        original_price,
+        promote_price,
+        stock,
+        cid,
+        create_date
+    </sql>
+
+<!--auto generated Code-->
+    <insert id="insert">
+        INSERT INTO product
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id != null"> id, </if>
+            <if test="pojo.name != null"> name, </if>
+            <if test="pojo.subTitle != null"> sub_title, </if>
+            <if test="pojo.originalPrice != null"> original_price, </if>
+            <if test="pojo.promotePrice != null"> promote_price, </if>
+            <if test="pojo.stock != null"> stock, </if>
+            <if test="pojo.cid != null"> cid, </if>
+            <if test="pojo.createDate != null"> create_date, </if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id != null"> #{pojo.id}, </if>
+            <if test="pojo.name != null"> #{pojo.name}, </if>
+            <if test="pojo.subTitle != null"> #{pojo.subTitle}, </if>
+            <if test="pojo.originalPrice != null"> #{pojo.originalPrice}, </if>
+            <if test="pojo.promotePrice != null"> #{pojo.promotePrice}, </if>
+            <if test="pojo.stock != null"> #{pojo.stock}, </if>
+            <if test="pojo.cid != null"> #{pojo.cid}, </if>
+            <if test="pojo.createDate != null"> #{pojo.createDate}, </if>
+        </trim>
+    </insert>
+
+<!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO product(
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.id},
+            #{pojo.name},
+            #{pojo.subTitle},
+            #{pojo.originalPrice},
+            #{pojo.promotePrice},
+            #{pojo.stock},
+            #{pojo.cid},
+            #{pojo.createDate}
+            )
+        </foreach>
+    </insert>
+
+<!--auto generated Code-->
+    <update id="update">
+        UPDATE product
+        <set>
+            <if test="pojo.id != null"> id = #{pojo.id}, </if>
+            <if test="pojo.name != null"> name = #{pojo.name}, </if>
+            <if test="pojo.subTitle != null"> sub_title = #{pojo.subTitle}, </if>
+            <if test="pojo.originalPrice != null"> original_price = #{pojo.originalPrice}, </if>
+            <if test="pojo.promotePrice != null"> promote_price = #{pojo.promotePrice}, </if>
+            <if test="pojo.stock != null"> stock = #{pojo.stock}, </if>
+            <if test="pojo.cid != null"> cid = #{pojo.cid}, </if>
+            <if test="pojo.createDate != null"> create_date = #{pojo.createDate} </if>
+        </set>
+         WHERE id = #{pojo.id}
+    </update>
+
+<!--auto generated Code-->
+    <select id="select" resultMap="AllColumnMap">
+        SELECT <include refid="all_column"/>
+        FROM product
+        <where>
+            <if test="pojo.id != null"> AND id = #{pojo.id} </if>
+            <if test="pojo.name != null"> AND name = #{pojo.name} </if>
+            <if test="pojo.subTitle != null"> AND sub_title = #{pojo.subTitle} </if>
+            <if test="pojo.originalPrice != null"> AND original_price = #{pojo.originalPrice} </if>
+            <if test="pojo.promotePrice != null"> AND promote_price = #{pojo.promotePrice} </if>
+            <if test="pojo.stock != null"> AND stock = #{pojo.stock} </if>
+            <if test="pojo.cid != null"> AND cid = #{pojo.cid} </if>
+            <if test="pojo.createDate != null"> AND create_date = #{pojo.createDate} </if>
+        </where>
+        LIMIT 1000 
+    </select>
+
+<!--auto generated Code-->
+    <delete id="delete">
+        DELETE FROM product where id = #{id}
+    </delete>
+</mapper>
