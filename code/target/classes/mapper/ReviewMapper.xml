@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.poncn.dao.ReviewDao">
+
+<!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.poncn.entity.Review">
+        <result column="id" property="id"/>
+        <result column="content" property="content"/>
+        <result column="uid" property="uid"/>
+        <result column="pid" property="pid"/>
+        <result column="create_date" property="createDate"/>
+    </resultMap>
+
+<!--auto generated Code-->
+    <sql id="all_column">
+        id,
+        content,
+        uid,
+        pid,
+        create_date
+    </sql>
+
+<!--auto generated Code-->
+    <insert id="insert">
+        INSERT INTO review
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id != null"> id, </if>
+            <if test="pojo.content != null"> content, </if>
+            <if test="pojo.uid != null"> uid, </if>
+            <if test="pojo.pid != null"> pid, </if>
+            <if test="pojo.createDate != null"> create_date, </if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id != null"> #{pojo.id}, </if>
+            <if test="pojo.content != null"> #{pojo.content}, </if>
+            <if test="pojo.uid != null"> #{pojo.uid}, </if>
+            <if test="pojo.pid != null"> #{pojo.pid}, </if>
+            <if test="pojo.createDate != null"> #{pojo.createDate}, </if>
+        </trim>
+    </insert>
+
+<!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO review(
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.id},
+            #{pojo.content},
+            #{pojo.uid},
+            #{pojo.pid},
+            #{pojo.createDate}
+            )
+        </foreach>
+    </insert>
+
+<!--auto generated Code-->
+    <update id="update">
+        UPDATE review
+        <set>
+            <if test="pojo.id != null"> id = #{pojo.id}, </if>
+            <if test="pojo.content != null"> content = #{pojo.content}, </if>
+            <if test="pojo.uid != null"> uid = #{pojo.uid}, </if>
+            <if test="pojo.pid != null"> pid = #{pojo.pid}, </if>
+            <if test="pojo.createDate != null"> create_date = #{pojo.createDate} </if>
+        </set>
+         WHERE id = #{pojo.id}
+    </update>
+
+<!--auto generated Code-->
+    <select id="select" resultMap="AllColumnMap">
+        SELECT <include refid="all_column"/>
+        FROM review
+        <where>
+            <if test="pojo.id != null"> AND id = #{pojo.id} </if>
+            <if test="pojo.content != null"> AND content = #{pojo.content} </if>
+            <if test="pojo.uid != null"> AND uid = #{pojo.uid} </if>
+            <if test="pojo.pid != null"> AND pid = #{pojo.pid} </if>
+            <if test="pojo.createDate != null"> AND create_date = #{pojo.createDate} </if>
+        </where>
+        LIMIT 1000 
+    </select>
+
+<!--auto generated Code-->
+    <delete id="delete">
+        DELETE FROM review where id = #{id}
+    </delete>
+</mapper>

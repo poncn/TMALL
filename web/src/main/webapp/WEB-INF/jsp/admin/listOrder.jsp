@@ -3,7 +3,7 @@
 <!-- 供购买者学习，请勿私自传播，否则自行承担相关法律责任-->
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-		 pageEncoding="UTF-8" import="java.util.*"%>
+         pageEncoding="UTF-8" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@include file="../include/admin/adminHeader.jsp"%>
@@ -44,7 +44,7 @@
 			</tr>
 			</thead>
 			<tbody>
-			<c:forEach items="${os}" var="o">
+            <c:forEach items="${pageBean.list}" var="o">
 				<tr>
 					<td>${o.id}</td>
 					<td>${o.statusDesc}</td>
@@ -58,7 +58,7 @@
 					<td><fmt:formatDate value="${o.confirmDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 
 					<td>
-						<button oid=${o.id} class="orderPageCheckOrderItems btn btn-primary btn-xs">查看详情</button>
+                        <button oid="${o.id}" class="orderPageCheckOrderItems btn btn-primary btn-xs">查看详情</button>
 
 						<c:if test="${o.status=='waitDelivery'}">
 							<a href="admin_order_delivery?id=${o.id}">
@@ -72,28 +72,28 @@
 
 						<div  class="orderPageOrderItem">
 							<table width="800px" align="center" class="orderPageOrderItemTable">
-								<c:forEach items="${o.orderItems}" var="oi">
-									<tr>
-										<td align="left">
-											<img width="40px" height="40px" src="img/productSingle/${oi.product.firstProductImage.id}.jpg">
-										</td>
+                                    <%--								<c:forEach items="${o.orderItems}" var="oi">--%>
+                                    <%--									<tr>--%>
+                                    <%--										<td align="left">--%>
+                                    <%--											<img width="40px" height="40px" src="img/productSingle/${oi.product.firstProductImage.id}.jpg">--%>
+                                    <%--										</td>--%>
 
-										<td>
-											<a href="foreproduct?pid=${oi.product.id}">
-												<span>${oi.product.name}</span>
-											</a>
-										</td>
-										<td align="right">
+                                    <%--										<td>--%>
+                                    <%--											<a href="foreproduct?pid=${oi.product.id}">--%>
+                                    <%--												<span>${oi.product.name}</span>--%>
+                                    <%--											</a>--%>
+                                    <%--										</td>--%>
+                                    <%--										<td align="right">--%>
 
-											<span class="text-muted">${oi.number}个</span>
-										</td>
-										<td align="right">
+                                    <%--											<span class="text-muted">${oi.number}个</span>--%>
+                                    <%--										</td>--%>
+                                    <%--										<td align="right">--%>
 
-											<span class="text-muted">单价：￥${oi.product.promotePrice}</span>
-										</td>
+                                    <%--											<span class="text-muted">单价：￥${oi.product.promotePrice}</span>--%>
+                                    <%--										</td>--%>
 
-									</tr>
-								</c:forEach>
+                                    <%--									</tr>--%>
+                                    <%--								</c:forEach>--%>
 
 							</table>
 						</div>

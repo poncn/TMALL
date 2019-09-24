@@ -1,10 +1,12 @@
 package com.poncn.service;
 
 import com.poncn.dao.OrderDao;
+import com.poncn.entity.Order;
+import com.poncn.entity.PageBean;
 import org.springframework.stereotype.Service;
+
 import javax.annotation.Resource;
 import java.util.List;
-import com.poncn.entity.Order;
 
 @Service
 public class OrderService {
@@ -20,10 +22,17 @@ public class OrderService {
         return orderDao.insertList(pojos);
     }
 
-    public List<Order> select(Order pojo){
-        return orderDao.select(pojo);
+    public int getTotals() {
+        return orderDao.getTotals();
     }
 
+    public PageBean<Order> select(int pageNumber, int pageSize) {
+        PageBean<Order> pageBean = new PageBean<Order>(pageNumber, pageSize);
+        pageBean.setPageCount(orderDao.getTotals());
+        List<Order> list = orderDao.select(pageBean);
+        pageBean.setList(list);
+        return pageBean;
+    }
     public int update(Order pojo){
         return orderDao.update(pojo);
     }

@@ -1,0 +1,10 @@
+-- auto Generated on 2019-09-23 13:45:43 
+-- DROP TABLE IF EXISTS `order_item`; 
+CREATE TABLE order_item(
+    `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键',
+    `pid` BIGINT NOT NULL DEFAULT -1 COMMENT 'pid',
+    `oid` BIGINT NOT NULL DEFAULT -1 COMMENT 'oid',
+    `uid` BIGINT NOT NULL DEFAULT -1 COMMENT 'uid',
+    `number` BIGINT NOT NULL DEFAULT -1 COMMENT 'number',
+    PRIMARY KEY (`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT 'order_item';

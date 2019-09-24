@@ -1,9 +1,11 @@
 package com.poncn.dao;
 
-import org.apache.ibatis.annotations.Param;
-import java.util.List;
 import com.poncn.entity.Order;
+import com.poncn.entity.PageBean;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface OrderDao {
@@ -12,7 +14,10 @@ public interface OrderDao {
 
     int insertList(@Param("pojos") List< Order> pojo);
 
-    List<Order> select(@Param("pojo") Order pojo);
+    int getTotals();
+
+    List<Order> select(@Param("pageBean") PageBean pageBean);
+
 
     int update(@Param("pojo") Order pojo);
 

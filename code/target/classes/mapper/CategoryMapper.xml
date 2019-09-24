@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.poncn.dao.CategoryDao">
+
+<!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.poncn.entity.Category">
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+    </resultMap>
+
+<!--auto generated Code-->
+    <sql id="all_column">
+        id,
+        name
+    </sql>
+
+<!--auto generated Code-->
+    <insert id="insert">
+        INSERT INTO category
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id != null"> id, </if>
+            <if test="pojo.name != null"> name, </if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id != null"> #{pojo.id}, </if>
+            <if test="pojo.name != null"> #{pojo.name}, </if>
+        </trim>
+    </insert>
+
+<!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO category(
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.id},
+            #{pojo.name}
+            )
+        </foreach>
+    </insert>
+
+<!--auto generated Code-->
+    <update id="update">
+        UPDATE category
+        <set>
+            <if test="pojo.id != null"> id = #{pojo.id}, </if>
+            <if test="pojo.name != null"> name = #{pojo.name} </if>
+        </set>
+         WHERE id = #{pojo.id}
+    </update>
+
+    <select id="getTotals" resultType="int">
+        SELECT COUNT(*) FROM category
+    </select>
+
+<!--auto generated Code-->
+    <select id="select" resultMap="AllColumnMap">
+        SELECT * FROM category order by id
+        LIMIT #{pageBean.index},#{pageBean.pageSize}
+    </select>
+
+<!--auto generated Code-->
+    <delete id="delete">
+        DELETE FROM category where id = #{id}
+    </delete>
+</mapper>

@@ -13,31 +13,31 @@ $(function(){
 <nav>
   <ul class="pagination">
     <li <c:if test="${pageBean.pageNumber==1}">class="disabled"</c:if>>
-      <a  href="${pageContext.request.contextPath}/admin/1" aria-label="Previous" >
+      <a href="?page=1" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
 
     <li <c:if test="${pageBean.pageNumber==1}">class="disabled"</c:if>>
-      <a  href="${pageContext.request.contextPath}/admin/${pageBean.pageNumber-1}" aria-label="Previous" >
+      <a href="?page=${pageBean.pageNumber-1}" aria-label="Previous">
         <span aria-hidden="true">&lsaquo;</span>
       </a>
     </li>
 
     <c:forEach begin="1" end="${pageBean.pageTotal}" step="1" var="n">
 		    <li <c:if test="${pageBean.pageNumber==n}">class="disabled"</c:if>>
-		    	<a href="${pageContext.request.contextPath}/admin/${n}" class="current">${n}</a>
+              <a href="?page=${n}" class="current">${n}</a>
 		    </li>
     </c:forEach>
 
     <li <c:if test="${pageBean.pageNumber==pageBean.pageTotal}">class="disabled"</c:if>>
-      <a href="${pageContext.request.contextPath}/admin/${pageBean.pageNumber+1}" aria-label="Next">
+      <a href="?page=${pageBean.pageNumber+1}" aria-label="Next">
         <span aria-hidden="true">&rsaquo;</span>
       </a>
     </li>
 
     <li <c:if test="${pageBean.pageNumber==pageBean.pageTotal}">class="disabled"</c:if>>
-      <a href="${pageContext.request.contextPath}/admin/${pageBean.pageTotal}" aria-label="Next">
+      <a href="?page=${pageBean.pageTotal}" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>

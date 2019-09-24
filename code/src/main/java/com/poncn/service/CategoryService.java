@@ -1,12 +1,12 @@
 package com.poncn.service;
 
 import com.poncn.dao.CategoryDao;
+import com.poncn.entity.Category;
 import com.poncn.entity.PageBean;
-import com.poncn.entity.User;
 import org.springframework.stereotype.Service;
+
 import javax.annotation.Resource;
 import java.util.List;
-import com.poncn.entity.Category;
 
 @Service
 public class CategoryService {

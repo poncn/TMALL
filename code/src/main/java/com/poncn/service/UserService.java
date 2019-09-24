@@ -1,10 +1,12 @@
 package com.poncn.service;
 
 import com.poncn.dao.UserDao;
+import com.poncn.entity.PageBean;
+import com.poncn.entity.User;
 import org.springframework.stereotype.Service;
+
 import javax.annotation.Resource;
 import java.util.List;
-import com.poncn.entity.User;
 
 @Service
 public class UserService {
@@ -20,8 +22,16 @@ public class UserService {
         return userDao.insertList(pojos);
     }
 
-    public List<User> select(User pojo){
-        return userDao.select(pojo);
+    public int getTotals() {
+        return userDao.getTotals();
+    }
+
+    public PageBean<User> select(int pageNumber, int pageSize) {
+        PageBean<User> pageBean = new PageBean<User>(pageNumber, pageSize);
+        pageBean.setPageCount(userDao.getTotals());
+        List<User> list = userDao.select(pageBean);
+        pageBean.setList(list);
+        return pageBean;
     }
 
     public int update(User pojo){

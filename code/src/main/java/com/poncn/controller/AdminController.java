@@ -4,8 +4,8 @@ import com.poncn.entity.Category;
 import com.poncn.entity.PageBean;
 import com.poncn.service.CategoryService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import java.util.Map;
@@ -28,12 +28,17 @@ public class AdminController {
         map.put("pageBean", pageBean);
         return "/admin/listCategory";
     }
-    @RequestMapping("/admin/{pageNumber}")
-    public String admin(@PathVariable String pageNumber, Map<String, Object> map) {
+
+    @RequestMapping("/admin")
+    public String admin(@RequestParam(defaultValue = "", value = "page", required = true) String pageNumber, Map<String, Object> map) {
         PageBean<Category> pageBean = categoryService.select(Integer.parseInt(pageNumber), 7);
         map.put("pageBean", pageBean);
         return "/admin/listCategory";
     }
 
+    @RequestMapping("login")
+    public String admin(@RequestParam(defaultValue = "", value = "user", required = true) String username, @RequestParam(name = "pwd", value = "", required = true) String password) {
+        return "redirect:/admin";
+    }
 
 }
