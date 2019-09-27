@@ -7,7 +7,7 @@ public class PropertyValue {
 
   private long id;
   private long pid;
-  private long ptid;
+  private Property property;
   private String value;
 
 }

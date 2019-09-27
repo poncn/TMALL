@@ -5,16 +5,16 @@
 <!--auto generated Code-->
     <resultMap id="AllColumnMap" type="com.poncn.entity.Order">
         <result column="id" property="id"/>
-        <result column="order_code" property="orderCode"/>
+        <result column="orderCode" property="orderCode"/>
         <result column="address" property="address"/>
         <result column="post" property="post"/>
         <result column="receiver" property="receiver"/>
         <result column="mobile" property="mobile"/>
-        <result column="user_message" property="userMessage"/>
-        <result column="create_date" property="createDate"/>
-        <result column="pay_date" property="payDate"/>
-        <result column="delivery_date" property="deliveryDate"/>
-        <result column="confirm_date" property="confirmDate"/>
+        <result column="userMessage" property="userMessage"/>
+        <result column="createDate" property="createDate"/>
+        <result column="payDate" property="payDate"/>
+        <result column="deliveryDate" property="deliveryDate"/>
+        <result column="confirmDate" property="confirmDate"/>
         <result column="uid" property="uid"/>
         <result column="status" property="status"/>
     </resultMap>
@@ -22,35 +22,35 @@
 <!--auto generated Code-->
     <sql id="all_column">
         id,
-        order_code,
+        orderCode,
         address,
         post,
         receiver,
         mobile,
-        user_message,
-        create_date,
-        pay_date,
-        delivery_date,
-        confirm_date,
+        userMessage,
+        createDate,
+        payDate,
+        deliveryDate,
+        confirmDate,
         uid,
         status
     </sql>
 
 <!--auto generated Code-->
     <insert id="insert">
-        INSERT INTO order
+        INSERT INTO `order`
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="pojo.id != null"> id, </if>
-            <if test="pojo.orderCode != null"> order_code, </if>
+            <if test="pojo.orderCode != null">orderCode,</if>
             <if test="pojo.address != null"> address, </if>
             <if test="pojo.post != null"> post, </if>
             <if test="pojo.receiver != null"> receiver, </if>
             <if test="pojo.mobile != null"> mobile, </if>
-            <if test="pojo.userMessage != null"> user_message, </if>
-            <if test="pojo.createDate != null"> create_date, </if>
-            <if test="pojo.payDate != null"> pay_date, </if>
-            <if test="pojo.deliveryDate != null"> delivery_date, </if>
-            <if test="pojo.confirmDate != null"> confirm_date, </if>
+            <if test="pojo.userMessage != null">userMessage,</if>
+            <if test="pojo.createDate != null">createDate,</if>
+            <if test="pojo.payDate != null">payDate,</if>
+            <if test="pojo.deliveryDate != null">deliveryDate,</if>
+            <if test="pojo.confirmDate != null">confirmDate,</if>
             <if test="pojo.uid != null"> uid, </if>
             <if test="pojo.status != null"> status, </if>
         </trim>
@@ -74,7 +74,7 @@
 
 <!--auto generated Code-->
     <insert id="insertList">
-        INSERT INTO order(
+        INSERT INTO `order`(
         <include refid="all_column"/>
         )VALUES
         <foreach collection="pojos" item="pojo" index="index" separator=",">
@@ -98,19 +98,19 @@
 
 <!--auto generated Code-->
     <update id="update">
-        UPDATE order
+        UPDATE `order`
         <set>
             <if test="pojo.id != null"> id = #{pojo.id}, </if>
-            <if test="pojo.orderCode != null"> order_code = #{pojo.orderCode}, </if>
+            <if test="pojo.orderCode != null">orderCode = #{pojo.orderCode},</if>
             <if test="pojo.address != null"> address = #{pojo.address}, </if>
             <if test="pojo.post != null"> post = #{pojo.post}, </if>
             <if test="pojo.receiver != null"> receiver = #{pojo.receiver}, </if>
             <if test="pojo.mobile != null"> mobile = #{pojo.mobile}, </if>
-            <if test="pojo.userMessage != null"> user_message = #{pojo.userMessage}, </if>
-            <if test="pojo.createDate != null"> create_date = #{pojo.createDate}, </if>
-            <if test="pojo.payDate != null"> pay_date = #{pojo.payDate}, </if>
-            <if test="pojo.deliveryDate != null"> delivery_date = #{pojo.deliveryDate}, </if>
-            <if test="pojo.confirmDate != null"> confirm_date = #{pojo.confirmDate}, </if>
+            <if test="pojo.userMessage != null">userMessage = #{pojo.userMessage},</if>
+            <if test="pojo.createDate != null">createDate = #{pojo.createDate},</if>
+            <if test="pojo.payDate != null">payDate = #{pojo.payDate},</if>
+            <if test="pojo.deliveryDate != null">deliveryDate = #{pojo.deliveryDate},</if>
+            <if test="pojo.confirmDate != null">confirmDate = #{pojo.confirmDate},</if>
             <if test="pojo.uid != null"> uid = #{pojo.uid}, </if>
             <if test="pojo.status != null"> status = #{pojo.status} </if>
         </set>
@@ -118,17 +118,26 @@
     </update>
 
     <select id="getTotals" resultType="int">
-        SELECT COUNT(*) FROM order
+        SELECT COUNT(*) FROM `order`
     </select>
 
     <!--auto generated Code-->
     <select id="select" resultMap="AllColumnMap">
-        SELECT * FROM order order by id
+        SELECT
+        <include refid="all_column"/>
+        FROM `order`
         LIMIT #{pageBean.index},#{pageBean.pageSize}
     </select>
 
 <!--auto generated Code-->
     <delete id="delete">
-        DELETE FROM order where id = #{id}
+        DELETE FROM `order` where id = #{id}
     </delete>
+
+    <select id="queryById" resultMap="AllColumnMap">
+        SELECT * FROM `order`
+        <where>
+            <if test="id != null">AND id = #{id}</if>
+        </where>
+    </select>
 </mapper>

@@ -23,14 +23,7 @@ public class AdminController {
     private CategoryService categoryService;
 
     @RequestMapping("/admin")
-    public String admin(Map<String, Object> map) {
-        PageBean<Category> pageBean = categoryService.select(1, 7);
-        map.put("pageBean", pageBean);
-        return "/admin/listCategory";
-    }
-
-    @RequestMapping("/admin")
-    public String admin(@RequestParam(defaultValue = "", value = "page", required = true) String pageNumber, Map<String, Object> map) {
+    public String admin(@RequestParam(defaultValue = "1", value = "page", required = true) String pageNumber, Map<String, Object> map) {
         PageBean<Category> pageBean = categoryService.select(Integer.parseInt(pageNumber), 7);
         map.put("pageBean", pageBean);
         return "/admin/listCategory";

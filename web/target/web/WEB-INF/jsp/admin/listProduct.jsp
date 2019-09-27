@@ -56,15 +56,13 @@
 			</tr>
 			</thead>
 			<tbody>
-			<c:forEach items="${ps}" var="p">
+			<c:forEach items="${pageBean.list}" var="p">
 				<tr>
 					<td>${p.id}</td>
 					<td>
-
-						<c:if test="${!empty p.firstProductImage}">
-							<img width="40px" src="img/productSingle/${p.firstProductImage.id}.jpg">
+						<c:if test="${!empty p.id}">
+							<img width="40px" src="${pageContext.request.contextPath}/img/productSingle/${p.id}.jpg">
 						</c:if>
-
 					</td>
 					<td>${p.name}</td>
 					<td>${p.subTitle}</td>

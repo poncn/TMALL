@@ -20,7 +20,5 @@ public interface UserDao {
 
     int update(@Param("pojo") User pojo);
 
-    int login(@Param("pojo") User pojo);
-
-    int loginOut(@Param("pojo") User pojo);
+    User queryByName(@Param("pojo") User pojo);
 }

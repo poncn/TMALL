@@ -7,7 +7,7 @@ public class Review {
 
   private long id;
   private String content;
-  private long uid;
+    private User user;
   private long pid;
   private java.sql.Timestamp createDate;
 

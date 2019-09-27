@@ -20,13 +20,11 @@
     <insert id="insert">
         INSERT INTO user
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="pojo.id != null"> id, </if>
             <if test="pojo.name != null"> name, </if>
             <if test="pojo.password != null"> password, </if>
         </trim>
         VALUES
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="pojo.id != null"> #{pojo.id}, </if>
             <if test="pojo.name != null"> #{pojo.name}, </if>
             <if test="pojo.password != null"> #{pojo.password}, </if>
         </trim>
@@ -63,8 +61,18 @@
 
     <!--auto generated Code-->
     <select id="select" resultMap="AllColumnMap">
-        SELECT * FROM user order by id
+        SELECT <include refid="all_column"/>
+         FROM user order by id
         LIMIT #{pageBean.index},#{pageBean.pageSize}
+    </select>
+
+    <select id="queryByName" resultMap="AllColumnMap">
+    SELECT <include refid="all_column"/>
+    FROM user
+        <where>
+            <if test="pojo.name != null"> AND name = #{pojo.name} </if>
+            <if test="pojo.password != null"> AND password = #{pojo.password} </if>
+        </where>
     </select>
 
     <!--auto generated Code-->

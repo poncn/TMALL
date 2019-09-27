@@ -1,10 +1,11 @@
 package com.poncn.service;
 
 import com.poncn.dao.ProductImageDao;
+import com.poncn.entity.ProductImage;
 import org.springframework.stereotype.Service;
+
 import javax.annotation.Resource;
 import java.util.List;
-import com.poncn.entity.ProductImage;
 
 @Service
 public class ProductImageService {
@@ -26,6 +27,10 @@ public class ProductImageService {
 
     public int update(ProductImage pojo){
         return productImageDao.update(pojo);
+    }
+
+    public long queryByPid(long pid) {
+        return productImageDao.queryByPid(pid);
     }
 
 }

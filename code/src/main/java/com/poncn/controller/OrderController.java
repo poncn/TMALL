@@ -20,7 +20,7 @@ public class OrderController {
     @Resource
     private OrderService orderService;
 
-    @RequestMapping("/listOrder/{page}")
+    @RequestMapping("/listOrder")
     public String listOrder(@RequestParam(defaultValue = "1", value = "page", required = true) String pageNumber, Map<String, Object> map) {
         PageBean<Order> pageBean = orderService.select(Integer.parseInt(pageNumber), 7);
         map.put("pageBean", pageBean);

@@ -4,10 +4,14 @@
 
 <!--auto generated Code-->
     <resultMap id="AllColumnMap" type="com.poncn.entity.PropertyValue">
-        <result column="id" property="id"/>
+        <id column="pvid" property="id"/>
         <result column="pid" property="pid"/>
-        <result column="ptid" property="ptid"/>
         <result column="value" property="value"/>
+        <association property="property" javaType="com.poncn.entity.Property">
+            <id column="ptid" property="id"/>
+            <result column="cid" property="cid"/>
+            <result column="name" property="name"/>
+        </association>
     </resultMap>
 
 <!--auto generated Code-->
@@ -20,7 +24,7 @@
 
 <!--auto generated Code-->
     <insert id="insert">
-        INSERT INTO property_value
+        INSERT INTO propertyvalue
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="pojo.id != null"> id, </if>
             <if test="pojo.pid != null"> pid, </if>
@@ -38,7 +42,7 @@
 
 <!--auto generated Code-->
     <insert id="insertList">
-        INSERT INTO property_value(
+        INSERT INTO propertyvalue(
         <include refid="all_column"/>
         )VALUES
         <foreach collection="pojos" item="pojo" index="index" separator=",">
@@ -53,7 +57,7 @@
 
 <!--auto generated Code-->
     <update id="update">
-        UPDATE property_value
+        UPDATE propertyvalue
         <set>
             <if test="pojo.id != null"> id = #{pojo.id}, </if>
             <if test="pojo.pid != null"> pid = #{pojo.pid}, </if>
@@ -66,7 +70,7 @@
 <!--auto generated Code-->
     <select id="select" resultMap="AllColumnMap">
         SELECT <include refid="all_column"/>
-        FROM property_value
+        FROM propertyvalue
         <where>
             <if test="pojo.id != null"> AND id = #{pojo.id} </if>
             <if test="pojo.pid != null"> AND pid = #{pojo.pid} </if>
@@ -76,8 +80,13 @@
         LIMIT 1000 
     </select>
 
+    <select id="queryByPid" resultMap="AllColumnMap">
+       SELECT  p.cid, p.name,pv.id pvid, pv.pid, pv.ptid, pv.value FROM propertyvalue pv,property p where pv.pid =#{pid} and pv.ptid=p.id
+    </select>
+
+
 <!--auto generated Code-->
     <delete id="delete">
-        DELETE FROM property_value where id = #{id}
+        DELETE FROM propertyvalue where id = #{id}
     </delete>
 </mapper>

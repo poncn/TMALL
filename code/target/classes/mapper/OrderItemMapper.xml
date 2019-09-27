@@ -3,15 +3,45 @@
 <mapper namespace="com.poncn.dao.OrderItemDao">
 
 <!--auto generated Code-->
+<!--    <resultMap id="AllColumnMap" type="com.poncn.entity.OrderItem">-->
+<!--        <result column="id" property="id"/>-->
+<!--        <result column="pid" property="pid"/>-->
+<!--        <result column="oid" property="oid"/>-->
+<!--        <result column="uid" property="uid"/>-->
+<!--        <result column="number" property="number"/>-->
+<!--    </resultMap>-->
+
     <resultMap id="AllColumnMap" type="com.poncn.entity.OrderItem">
-        <result column="id" property="id"/>
-        <result column="pid" property="pid"/>
-        <result column="oid" property="oid"/>
+        <id column="id" property="id"/>
         <result column="uid" property="uid"/>
         <result column="number" property="number"/>
+        <association property="OIOrder" javaType="com.poncn.entity.Order">
+            <id column="oid" property="id"/>
+            <result column="orderCode" property="orderCode"/>
+            <result column="address" property="address"/>
+            <result column="post" property="post"/>
+            <result column="receiver" property="receiver"/>
+            <result column="mobile" property="mobile"/>
+            <result column="userMessage" property="userMessage"/>
+            <result column="createDate" property="createDate"/>
+            <result column="payDate" property="payDate"/>
+            <result column="deliveryDate" property="deliveryDate"/>
+            <result column="confirmDate" property="confirmDate"/>
+            <result column="uid" property="uid"/>
+            <result column="status" property="status"/>
+        </association>
+        <collection property="OIProduct" ofType="com.poncn.entity.Product">
+            <id column="pid" property="id"/>
+            <result column="name" property="name"/>
+            <result column="subTitle" property="subTitle"/>
+            <result column="originalPrice" property="originalPrice"/>
+            <result column="promotePrice" property="promotePrice"/>
+            <result column="stock" property="stock"/>
+            <result column="cid" property="cid"/>
+            <result column="createDate" property="createDate"/>
+        </collection>
     </resultMap>
 
-<!--auto generated Code-->
     <sql id="all_column">
         id,
         pid,
@@ -20,9 +50,9 @@
         number
     </sql>
 
-<!--auto generated Code-->
+
     <insert id="insert">
-        INSERT INTO order_item
+        INSERT INTO orderitem
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="pojo.id != null"> id, </if>
             <if test="pojo.pid != null"> pid, </if>
@@ -40,9 +70,9 @@
         </trim>
     </insert>
 
-<!--auto generated Code-->
+
     <insert id="insertList">
-        INSERT INTO order_item(
+        INSERT INTO orderitem(
         <include refid="all_column"/>
         )VALUES
         <foreach collection="pojos" item="pojo" index="index" separator=",">
@@ -56,9 +86,9 @@
         </foreach>
     </insert>
 
-<!--auto generated Code-->
+
     <update id="update">
-        UPDATE order_item
+        UPDATE orderitem
         <set>
             <if test="pojo.id != null"> id = #{pojo.id}, </if>
             <if test="pojo.pid != null"> pid = #{pojo.pid}, </if>
@@ -69,10 +99,10 @@
          WHERE id = #{pojo.id}
     </update>
 
-<!--auto generated Code-->
+
     <select id="select" resultMap="AllColumnMap">
         SELECT <include refid="all_column"/>
-        FROM order_item
+        FROM orderitem
         <where>
             <if test="pojo.id != null"> AND id = #{pojo.id} </if>
             <if test="pojo.pid != null"> AND pid = #{pojo.pid} </if>
@@ -80,11 +110,18 @@
             <if test="pojo.uid != null"> AND uid = #{pojo.uid} </if>
             <if test="pojo.number != null"> AND number = #{pojo.number} </if>
         </where>
-        LIMIT 1000 
+        LIMIT 1000
     </select>
 
-<!--auto generated Code-->
+    <select id="queryByUid" resultMap="AllColumnMap">
+         select o.*,p.*,oi.* from `order` o,product p,orderitem oi where oi.uid =#{uid} and oi.oid=o.id and oi.pid=p.id
+    </select>
+    <select id="queryByCart" resultMap="AllColumnMap">
+         select o.*,p.*,oi.* from `order` o,product p,orderitem oi where oi.uid =#{uid} and oi.oid=o.id and oi.pid=p.id and o.status='cart'
+    </select>
+
+
     <delete id="delete">
-        DELETE FROM order_item where id = #{id}
+        DELETE FROM orderitem where id = #{id}
     </delete>
 </mapper>

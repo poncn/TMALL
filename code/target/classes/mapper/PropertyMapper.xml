@@ -57,16 +57,18 @@
          WHERE id = #{pojo.id}
     </update>
 
-<!--auto generated Code-->
+    <select id="getTotals" resultType="int">
+        SELECT COUNT(*) FROM property
+    </select>
+
+    <!--auto generated Code-->
     <select id="select" resultMap="AllColumnMap">
-        SELECT <include refid="all_column"/>
-        FROM property
+        SELECT * FROM property
         <where>
-            <if test="pojo.id != null"> AND id = #{pojo.id} </if>
-            <if test="pojo.cid != null"> AND cid = #{pojo.cid} </if>
-            <if test="pojo.name != null"> AND name = #{pojo.name} </if>
+            <if test="pageBean.t.cid != null"> AND cid = #{pageBean.t.cid} </if>
         </where>
-        LIMIT 1000 
+        order by id
+        LIMIT #{pageBean.index},#{pageBean.pageSize}
     </select>
 
 <!--auto generated Code-->

@@ -1,10 +1,6 @@
-<!-- 模仿天猫整站ssm 教程 为how2j.cn 版权所有-->
-<!-- 本教程仅用于学习使用，切勿用于非法用途，由此引起一切后果与本站无关-->
-<!-- 供购买者学习，请勿私自传播，否则自行承担相关法律责任-->
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" isELIgnored="false"%>
-<%@ taglib prefix='fmt' uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <script>
  
@@ -21,7 +17,7 @@ $(function(){
             num = stock;
         $(".productNumberSetting").val(num);
     });
-     
+
     $(".increaseNumber").click(function(){
         var num= $(".productNumberSetting").val();
         num++;
@@ -36,7 +32,7 @@ $(function(){
             num=1;
         $(".productNumberSetting").val(num);
     });
-     
+
     $(".addCartButton").removeAttr("disabled");
     $(".addCartLink").click(function(){
         var page = "forecheckLogin";
@@ -57,19 +53,19 @@ $(function(){
                                         $(".addCartButton").css("background-color","lightgray")
                                         $(".addCartButton").css("border-color","lightgray")
                                         $(".addCartButton").css("color","black")
-                                         
+
                                     }
                                     else{
-                                         
+
                                     }
                                 }
-                        );                          
+                        );
                     }
                     else{
-                        $("#loginModal").modal('show');                     
+                        $("#loginModal").modal('show');
                     }
                 }
-        );      
+        );
         return false;
     });
     $(".buyLink").click(function(){
@@ -82,23 +78,23 @@ $(function(){
                         location.href= $(".buyLink").attr("href")+"&num="+num;
                     }
                     else{
-                        $("#loginModal").modal('show');                     
+                        $("#loginModal").modal('show');
                     }
                 }
-        );      
+        );
         return false;
     });
-     
+
     $("button.loginSubmitButton").click(function(){
         var name = $("#name").val();
         var password = $("#password").val();
-         
+
         if(0==name.length||0==password.length){
             $("span.errorMessage").html("请输入账号密码");
-            $("div.loginErrorMessageDiv").show();           
+            $("div.loginErrorMessageDiv").show();
             return false;
         }
-         
+
         var page = "foreloginAjax";
         $.get(
                 page,
@@ -109,30 +105,30 @@ $(function(){
                     }
                     else{
                         $("span.errorMessage").html("账号密码错误");
-                        $("div.loginErrorMessageDiv").show();                       
+                        $("div.loginErrorMessageDiv").show();
                     }
                 }
-        );          
-         
+        );
+
         return true;
     });
-     
+
     $("img.smallImage").mouseenter(function(){
         var bigImageURL = $(this).attr("bigImageURL");
         $("img.bigImg").attr("src",bigImageURL);
     });
-     
+
     $("img.bigImg").load(
         function(){
             $("img.smallImage").each(function(){
                 var bigImageURL = $(this).attr("bigImageURL");
                 img = new Image();
                 img.src = bigImageURL;
-                 
+
                 img.onload = function(){
                     $("div.img4load").append($(img));
                 };
-            });     
+            });
         }
     );
 });
@@ -142,10 +138,14 @@ $(function(){
 <div class="imgAndInfo">
  
     <div class="imgInimgAndInfo">
-        <img src="img/productSingle/${p.firstProductImage.id}.jpg" class="bigImg">
+        <img src="${pageContext.request.contextPath}/img/productSingle/${p.productImage[0].id}.jpg" class="bigImg">
         <div class="smallImageDiv">
-            <c:forEach items="${p.productSingleImages}" var="pi">
-                <img src="img/productSingle_small/${pi.id}.jpg" bigImageURL="img/productSingle/${pi.id}.jpg" class="smallImage">
+            <c:forEach items="${p.productImage}" var="pi">
+                <c:if test="${pi.type=='type_single'}">
+                    <img src="${pageContext.request.contextPath}/img/productSingle_small/${pi.id}.jpg"
+                         bigImageURL="${pageContext.request.contextPath}/img/productSingle/${pi.id}.jpg"
+                         class="smallImage">
+                </c:if>
             </c:forEach>
         </div>
         <div class="img4load hidden" ></div>
@@ -172,7 +172,8 @@ $(function(){
 
 
             <div class="productPriceDiv">
-                <div class="gouwujuanDiv"><img height="16px" src="img/site/gouwujuan.png">
+                <div class="gouwujuanDiv"><img height="16px"
+                                               src="${pageContext.request.contextPath}/img/site/gouwujuan.png">
                 <span> 全天猫实物商品通用</span>
                  
                 </div>
@@ -195,7 +196,7 @@ $(function(){
         </div>
 
         <div class="productSaleAndReviewNumber">
-            <div>销量 <span class="redColor boldWord"> ${p.saleCount }</span></div>   
+            <%--     <div>销量 <span class="redColor boldWord"> ${p.saleCount }</span></div>  --%>
             <div>累计评价 <span class="redColor boldWord"> ${p.reviewCount}</span></div>    
         </div>
         <div class="productNumber">
@@ -207,14 +208,14 @@ $(function(){
                 <span class="arrow">
                     <a href="#nowhere" class="increaseNumber">
                     <span class="updown">
-                            <img src="img/site/increase.png">
+                            <img src="${pageContext.request.contextPath}/img/site/increase.png">
                     </span>
                     </a>
                      
                     <span class="updownMiddle"> </span>
                     <a href="#nowhere"  class="decreaseNumber">
                     <span class="updown">
-                            <img src="img/site/decrease.png">
+                            <img src="${pageContext.request.contextPath}/img/site/decrease.png">
                     </span>
                     </a>
                      

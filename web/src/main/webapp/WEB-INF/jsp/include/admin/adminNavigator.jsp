@@ -7,7 +7,7 @@
 		<a class="navbar-brand" href="#nowhere">天猫后台</a>
 
         <a class="navbar-brand" href="${pageContext.request.contextPath}/admin">分类管理</a>
-        <a class="navbar-brand" href="${pageContext.request.contextPath}/listUser/1">用户管理</a>
-        <a class="navbar-brand" href="${pageContext.request.contextPath}/listOrder/1">订单管理</a>
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/listUser">用户管理</a>
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/listOrder">订单管理</a>
 	</nav>
 </div>

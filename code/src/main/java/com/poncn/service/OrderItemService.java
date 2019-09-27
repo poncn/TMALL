@@ -1,14 +1,14 @@
 package com.poncn.service;
 
 import com.poncn.dao.OrderItemDao;
+import com.poncn.entity.OrderItem;
 import org.springframework.stereotype.Service;
+
 import javax.annotation.Resource;
 import java.util.List;
-import com.poncn.entity.OrderItem;
 
 @Service
 public class OrderItemService {
-
     @Resource
     private OrderItemDao orderItemDao;
 
@@ -24,7 +24,16 @@ public class OrderItemService {
         return orderItemDao.select(pojo);
     }
 
+    public List<OrderItem> queryByUid(long id) {
+        return orderItemDao.queryByUid(id);
+    }
+
+    public List<OrderItem> queryByCart(long id) {
+        return orderItemDao.queryByCart(id);
+    }
+
     public int update(OrderItem pojo){
+
         return orderItemDao.update(pojo);
     }
 

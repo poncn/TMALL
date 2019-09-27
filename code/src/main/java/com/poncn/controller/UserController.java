@@ -20,7 +20,7 @@ public class UserController {
     @Resource
     private UserService userService;
 
-    @RequestMapping("/listUser/{page}")
+    @RequestMapping("/listUser")
     public String listUser(@RequestParam(defaultValue = "1", value = "page", required = true) String pageNumber, Map<String, Object> map) {
         PageBean<User> pageBean = userService.select(Integer.parseInt(pageNumber), 7);
         map.put("pageBean", pageBean);

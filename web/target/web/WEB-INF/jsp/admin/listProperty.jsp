@@ -45,7 +45,7 @@
 			</tr>
 			</thead>
 			<tbody>
-			<c:forEach items="${ps}" var="p">
+			<c:forEach items="${pageBean.list}" var="p">
 
 				<tr>
 					<td>${p.id}</td>

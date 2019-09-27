@@ -4,11 +4,14 @@
 
 <!--auto generated Code-->
     <resultMap id="AllColumnMap" type="com.poncn.entity.Review">
-        <result column="id" property="id"/>
+        <id column="id" property="id"/>
         <result column="content" property="content"/>
-        <result column="uid" property="uid"/>
         <result column="pid" property="pid"/>
-        <result column="create_date" property="createDate"/>
+        <result column="createDate" property="createDate"/>
+        <association property="user" javaType="com.poncn.entity.User">
+            <id column="uid" property="id"/>
+            <result column="name" property="name"/>
+        </association>
     </resultMap>
 
 <!--auto generated Code-->
@@ -17,7 +20,7 @@
         content,
         uid,
         pid,
-        create_date
+        createDate
     </sql>
 
 <!--auto generated Code-->
@@ -81,6 +84,10 @@
             <if test="pojo.createDate != null"> AND create_date = #{pojo.createDate} </if>
         </where>
         LIMIT 1000 
+    </select>
+
+    <select id="queryByPid" resultMap="AllColumnMap">
+        SELECT * FROM review,user where pid = #{pid}
     </select>
 
 <!--auto generated Code-->

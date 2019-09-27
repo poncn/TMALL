@@ -1,10 +1,11 @@
 package com.poncn.service;
 
 import com.poncn.dao.ReviewDao;
+import com.poncn.entity.Review;
 import org.springframework.stereotype.Service;
+
 import javax.annotation.Resource;
 import java.util.List;
-import com.poncn.entity.Review;
 
 @Service
 public class ReviewService {
@@ -22,6 +23,10 @@ public class ReviewService {
 
     public List<Review> select(Review pojo){
         return reviewDao.select(pojo);
+    }
+
+    public List<Review> queryByPid(long pid) {
+        return reviewDao.queryByPid(pid);
     }
 
     public int update(Review pojo){

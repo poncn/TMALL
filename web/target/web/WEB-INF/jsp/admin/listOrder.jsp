@@ -3,12 +3,12 @@
 <!-- 供购买者学习，请勿私自传播，否则自行承担相关法律责任-->
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-		 pageEncoding="UTF-8" import="java.util.*"%>
+         pageEncoding="UTF-8" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <%@include file="../include/admin/adminHeader.jsp"%>
 <%@include file="../include/admin/adminNavigator.jsp"%>
-
 <script>
     $(function(){
         $("button.orderPageCheckOrderItems").click(function(){
@@ -44,21 +44,19 @@
 			</tr>
 			</thead>
 			<tbody>
-			<c:forEach items="${pageBean.list}" var="o">
+            <c:forEach items="${pageBean.list}" var="o">
 				<tr>
 					<td>${o.id}</td>
-					<td>${o.statusDesc}</td>
-					<td>￥<fmt:formatNumber type="number" value="${o.total}" minFractionDigits="2"/></td>
-					<td align="center">${o.totalNumber}</td>
-					<td align="center">${o.user.name}</td>
-
-					<td><fmt:formatDate value="${o.createDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-					<td><fmt:formatDate value="${o.payDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-					<td><fmt:formatDate value="${o.deliveryDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-					<td><fmt:formatDate value="${o.confirmDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-
+					<td>${o.status}</td>
+					<td>1</td>
+					<td>${o.post}</td>
+					<td>${o.receiver}</td>
+					<td>${o.createDate}</td>
+					<td>${o.createDate}</td>
+					<td>${o.createDate}</td>
+					<td>${o.createDate}</td>
 					<td>
-						<button oid="${o.id}" class="orderPageCheckOrderItems btn btn-primary btn-xs">查看详情</button>
+                        <button oid="${o.id}" class="orderPageCheckOrderItems btn btn-primary btn-xs">查看详情</button>
 
 						<c:if test="${o.status=='waitDelivery'}">
 							<a href="admin_order_delivery?id=${o.id}">
@@ -67,39 +65,39 @@
 						</c:if>
 					</td>
 				</tr>
-				<tr class="orderPageOrderItemTR"  oid=${o.id}>
-					<td colspan="10" align="center">
+<%--				<tr class="orderPageOrderItemTR"  oid=${o.id}>--%>
+<%--					<td colspan="10" align="center">--%>
 
-						<div  class="orderPageOrderItem">
-							<table width="800px" align="center" class="orderPageOrderItemTable">
-<%--								<c:forEach items="${o.orderItems}" var="oi">--%>
-<%--									<tr>--%>
-<%--										<td align="left">--%>
-<%--											<img width="40px" height="40px" src="img/productSingle/${oi.product.firstProductImage.id}.jpg">--%>
-<%--										</td>--%>
+<%--						<div  class="orderPageOrderItem">--%>
+<%--							<table width="800px" align="center" class="orderPageOrderItemTable">--%>
+<%--                                    &lt;%&ndash;								<c:forEach items="${o.orderItems}" var="oi">&ndash;%&gt;--%>
+<%--                                    &lt;%&ndash;									<tr>&ndash;%&gt;--%>
+<%--                                    &lt;%&ndash;										<td align="left">&ndash;%&gt;--%>
+<%--                                    &lt;%&ndash;											<img width="40px" height="40px" src="img/productSingle/${oi.product.firstProductImage.id}.jpg">&ndash;%&gt;--%>
+<%--                                    &lt;%&ndash;										</td>&ndash;%&gt;--%>
 
-<%--										<td>--%>
-<%--											<a href="foreproduct?pid=${oi.product.id}">--%>
-<%--												<span>${oi.product.name}</span>--%>
-<%--											</a>--%>
-<%--										</td>--%>
-<%--										<td align="right">--%>
+<%--                                    &lt;%&ndash;										<td>&ndash;%&gt;--%>
+<%--                                    &lt;%&ndash;											<a href="foreproduct?pid=${oi.product.id}">&ndash;%&gt;--%>
+<%--                                    &lt;%&ndash;												<span>${oi.product.name}</span>&ndash;%&gt;--%>
+<%--                                    &lt;%&ndash;											</a>&ndash;%&gt;--%>
+<%--                                    &lt;%&ndash;										</td>&ndash;%&gt;--%>
+<%--                                    &lt;%&ndash;										<td align="right">&ndash;%&gt;--%>
 
-<%--											<span class="text-muted">${oi.number}个</span>--%>
-<%--										</td>--%>
-<%--										<td align="right">--%>
+<%--                                    &lt;%&ndash;											<span class="text-muted">${oi.number}个</span>&ndash;%&gt;--%>
+<%--                                    &lt;%&ndash;										</td>&ndash;%&gt;--%>
+<%--                                    &lt;%&ndash;										<td align="right">&ndash;%&gt;--%>
 
-<%--											<span class="text-muted">单价：￥${oi.product.promotePrice}</span>--%>
-<%--										</td>--%>
+<%--                                    &lt;%&ndash;											<span class="text-muted">单价：￥${oi.product.promotePrice}</span>&ndash;%&gt;--%>
+<%--                                    &lt;%&ndash;										</td>&ndash;%&gt;--%>
 
-<%--									</tr>--%>
-<%--								</c:forEach>--%>
+<%--                                    &lt;%&ndash;									</tr>&ndash;%&gt;--%>
+<%--                                    &lt;%&ndash;								</c:forEach>&ndash;%&gt;--%>
 
-							</table>
-						</div>
+<%--							</table>--%>
+<%--						</div>--%>
 
-					</td>
-				</tr>
+<%--					</td>--%>
+<%--				</tr>--%>
 			</c:forEach>
 			</tbody>
 		</table>

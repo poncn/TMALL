@@ -3,7 +3,8 @@ package com.poncn.entity;
 import java.util.List;
 
 public class PageBean<T> {
-    List<T> list; //页面内容
+    private List<T> list; //页面内容
+    private T t;
     private int pageNumber; //当前页
     private int pageSize; //页面条数
     private int pageCount; //总条数
@@ -12,7 +13,6 @@ public class PageBean<T> {
 
     //定义构造
     public PageBean(int pageNumber, int pageSize) {
-        super();
         this.pageNumber = pageNumber;
         this.pageSize = pageSize;
     }
@@ -60,5 +60,13 @@ public class PageBean<T> {
 
     public void setPageTotal(int pageTotal) {
         this.pageTotal = pageTotal;
+    }
+
+    public T getT() {
+        return t;
+    }
+
+    public void setT(T t) {
+        this.t = t;
     }
 }

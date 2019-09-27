@@ -1,21 +1,22 @@
 package com.poncn.dao;
 
+import com.poncn.entity.Category;
 import com.poncn.entity.PageBean;
 import org.apache.ibatis.annotations.Param;
-import java.util.List;
-import com.poncn.entity.Category;
-import org.springframework.stereotype.Repository;
 
-@Repository
+import java.util.List;
+
 public interface CategoryDao {
 
     int insert(@Param("pojo") Category pojo);
 
-    int insertList(@Param("pojos") List< Category> pojo);
-
-    int getTotals();
+    int getCounts();
 
     List<Category> select(@Param("pageBean") PageBean pageBean);
+
+    List<Category> queryCategoryProduct();
+
+    long queryCount();
 
     int update(@Param("pojo") Category pojo);
 

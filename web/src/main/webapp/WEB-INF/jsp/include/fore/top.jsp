@@ -1,12 +1,7 @@
-<!-- 模仿天猫整站ssm 教程 为how2j.cn 版权所有-->
-<!-- 本教程仅用于学习使用，切勿用于非法用途，由此引起一切后果与本站无关-->
-<!-- 供购买者学习，请勿私自传播，否则自行承担相关法律责任-->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
 
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-		 pageEncoding="UTF-8" isELIgnored="false"%>
-
-<nav class="top ">
-	<a href="${contextPath}">
+<nav class="top">
+    <a href="${pageContext.request.contextPath}/index">
 		<span style="color:#C40000;margin:0px" class=" glyphicon glyphicon-home redColor"></span>
 		天猫首页
 	</a>
@@ -23,15 +18,12 @@
 		<a href="registerPage">免费注册</a>
 	</c:if>
 
-
 	<span class="pull-right">
-			<a href="forebought">我的订单</a>
-			<a href="forecart">
+			<a href="${pageContext.request.contextPath}/bought/forebought">我的订单</a>
+			<a href="${pageContext.request.contextPath}/cart/forecart">
 			<span style="color:#C40000;margin:0px" class=" glyphicon glyphicon-shopping-cart redColor"></span>
 			购物车<strong>${cartTotalItemNumber}</strong>件</a>
-		</span>
-
-
+	</span>
 </nav>
 
 

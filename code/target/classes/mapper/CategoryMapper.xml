@@ -2,19 +2,31 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.poncn.dao.CategoryDao">
 
-<!--auto generated Code-->
     <resultMap id="AllColumnMap" type="com.poncn.entity.Category">
         <result column="id" property="id"/>
         <result column="name" property="name"/>
     </resultMap>
 
-<!--auto generated Code-->
+    <resultMap id="CategoryProduct" type="com.poncn.entity.Category">
+        <id column="cid" property="id"/>
+        <result column="cname" property="name"/>
+        <collection property="products" ofType="com.poncn.entity.Product">
+            <id column="pcid" property="cid"/>
+            <id column="pid" property="id"/>
+            <result column="pname" property="name"/>
+            <result column="subTitle" property="subTitle"/>
+            <result column="originalPrice" property="originalPrice"/>
+            <result column="promotePrice" property="promotePrice"/>
+            <result column="stock" property="stock"/>
+            <result column="createDate" property="createDate"/>
+        </collection>
+    </resultMap>
+
     <sql id="all_column">
         id,
         name
     </sql>
 
-<!--auto generated Code-->
     <insert id="insert">
         INSERT INTO category
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -28,20 +40,6 @@
         </trim>
     </insert>
 
-<!--auto generated Code-->
-    <insert id="insertList">
-        INSERT INTO category(
-        <include refid="all_column"/>
-        )VALUES
-        <foreach collection="pojos" item="pojo" index="index" separator=",">
-            (
-            #{pojo.id},
-            #{pojo.name}
-            )
-        </foreach>
-    </insert>
-
-<!--auto generated Code-->
     <update id="update">
         UPDATE category
         <set>
@@ -51,17 +49,23 @@
          WHERE id = #{pojo.id}
     </update>
 
-    <select id="getTotals" resultType="int">
+    <select id="getCounts" resultType="int">
         SELECT COUNT(*) FROM category
     </select>
 
-<!--auto generated Code-->
     <select id="select" resultMap="AllColumnMap">
         SELECT * FROM category order by id
         LIMIT #{pageBean.index},#{pageBean.pageSize}
     </select>
 
-<!--auto generated Code-->
+    <select id="queryCategoryProduct" resultMap="CategoryProduct">
+        select  c.id cid ,c.name cname,p.id pid, p.name pname, p.subTitle, p.originalPrice, p.promotePrice, p.stock, p.cid pcid, p.createDate from category c,product p where c.id = p.cid order by pid
+    </select>
+
+    <select id="queryCount" resultType="long">
+        select count(*) from category
+    </select>
+
     <delete id="delete">
         DELETE FROM category where id = #{id}
     </delete>

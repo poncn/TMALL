@@ -2,6 +2,8 @@ package com.poncn.entity;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class Product {
 
@@ -12,6 +14,9 @@ public class Product {
   private double promotePrice;
   private long stock;
   private long cid;
+  private Category category;
+  private List<ProductImage> productImage;
   private java.sql.Timestamp createDate;
-
+  private long productImg;
+  private long reviewCount;
 }

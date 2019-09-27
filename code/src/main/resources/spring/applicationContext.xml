@@ -63,7 +63,11 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="mapperLocations" value="classpath:mapper/*Mapper.xml"/>
-        <property name="typeHandlersPackage" value="com.poncn.entity"/>
+        <!--        <property name="typeHandlersPackage" value="com.poncn.entity"/>-->
+        <!--        <property name="configLocation"/>-->
+    </bean>
+    <bean class="org.apache.ibatis.session.Configuration">
+        <property name="logImpl" value="org.apache.ibatis.logging.stdout.StdOutImpl"/>
     </bean>
 
     <bean id="myMapper" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
@@ -84,6 +88,15 @@
         <property name="prefix" value="/WEB-INF/jsp"/>
         <property name="suffix" value=".jsp"/>
     </bean>
+
+    <!-- spring mvc interceptor -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/bought/**"/>
+            <mvc:mapping path="/cart/**"/>
+            <bean class="com.poncn.interceptor.BoughtInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
     <context:component-scan base-package="com.poncn"/>
 

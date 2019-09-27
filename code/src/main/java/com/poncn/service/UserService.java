@@ -38,4 +38,7 @@ public class UserService {
         return userDao.update(pojo);
     }
 
+    public User queryByName(User pojo) {
+        return userDao.queryByName(pojo);
+    }
 }

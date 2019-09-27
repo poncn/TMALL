@@ -4,26 +4,35 @@
 
 <!--auto generated Code-->
     <resultMap id="AllColumnMap" type="com.poncn.entity.Product">
-        <result column="id" property="id"/>
-        <result column="name" property="name"/>
-        <result column="sub_title" property="subTitle"/>
-        <result column="original_price" property="originalPrice"/>
-        <result column="promote_price" property="promotePrice"/>
+        <id column="pid" property="id"/>
+        <result column="pname" property="name"/>
+        <result column="subTitle" property="subTitle"/>
+        <result column="originalPrice" property="originalPrice"/>
+        <result column="promotePrice" property="promotePrice"/>
         <result column="stock" property="stock"/>
         <result column="cid" property="cid"/>
-        <result column="create_date" property="createDate"/>
+        <result column="createDate" property="createDate"/>
+        <association property="category" javaType="com.poncn.entity.Category">
+            <id column="cid" property="id"/>
+            <result column="cname" property="name"/>
+        </association>
+        <collection property="productImage" ofType="com.poncn.entity.ProductImage">
+            <id column="pid" property="pid"/>
+            <id column="piid" property="id"/>
+            <result column="type" property="type"/>
+        </collection>
     </resultMap>
 
 <!--auto generated Code-->
     <sql id="all_column">
         id,
         name,
-        sub_title,
-        original_price,
-        promote_price,
+        subTitle,
+        originalPrice,
+        promotePrice,
         stock,
         cid,
-        create_date
+        createDate
     </sql>
 
 <!--auto generated Code-->
@@ -32,12 +41,12 @@
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="pojo.id != null"> id, </if>
             <if test="pojo.name != null"> name, </if>
-            <if test="pojo.subTitle != null"> sub_title, </if>
-            <if test="pojo.originalPrice != null"> original_price, </if>
-            <if test="pojo.promotePrice != null"> promote_price, </if>
+            <if test="pojo.subTitle != null"> subTitle, </if>
+            <if test="pojo.originalPrice != null"> originalPrice, </if>
+            <if test="pojo.promotePrice != null"> promotePrice, </if>
             <if test="pojo.stock != null"> stock, </if>
             <if test="pojo.cid != null"> cid, </if>
-            <if test="pojo.createDate != null"> create_date, </if>
+            <if test="pojo.createDate != null"> createDate, </if>
         </trim>
         VALUES
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -77,31 +86,36 @@
         <set>
             <if test="pojo.id != null"> id = #{pojo.id}, </if>
             <if test="pojo.name != null"> name = #{pojo.name}, </if>
-            <if test="pojo.subTitle != null"> sub_title = #{pojo.subTitle}, </if>
-            <if test="pojo.originalPrice != null"> original_price = #{pojo.originalPrice}, </if>
-            <if test="pojo.promotePrice != null"> promote_price = #{pojo.promotePrice}, </if>
+            <if test="pojo.subTitle != null"> subTitle = #{pojo.subTitle}, </if>
+            <if test="pojo.originalPrice != null"> originalPrice = #{pojo.originalPrice}, </if>
+            <if test="pojo.promotePrice != null"> promotePrice = #{pojo.promotePrice}, </if>
             <if test="pojo.stock != null"> stock = #{pojo.stock}, </if>
             <if test="pojo.cid != null"> cid = #{pojo.cid}, </if>
-            <if test="pojo.createDate != null"> create_date = #{pojo.createDate} </if>
+            <if test="pojo.createDate != null"> createDate = #{pojo.createDate} </if>
         </set>
          WHERE id = #{pojo.id}
     </update>
 
 <!--auto generated Code-->
+    <select id="getTotals" resultType="int">
+        SELECT COUNT(*) FROM pi
+    </select>
+
+    <!--auto generated Code-->
     <select id="select" resultMap="AllColumnMap">
-        SELECT <include refid="all_column"/>
-        FROM product
+        SELECT * FROM pi
         <where>
-            <if test="pojo.id != null"> AND id = #{pojo.id} </if>
-            <if test="pojo.name != null"> AND name = #{pojo.name} </if>
-            <if test="pojo.subTitle != null"> AND sub_title = #{pojo.subTitle} </if>
-            <if test="pojo.originalPrice != null"> AND original_price = #{pojo.originalPrice} </if>
-            <if test="pojo.promotePrice != null"> AND promote_price = #{pojo.promotePrice} </if>
-            <if test="pojo.stock != null"> AND stock = #{pojo.stock} </if>
-            <if test="pojo.cid != null"> AND cid = #{pojo.cid} </if>
-            <if test="pojo.createDate != null"> AND create_date = #{pojo.createDate} </if>
+            <if test="pageBean.t.cid != null"> AND cid = #{pageBean.t.cid} </if>
         </where>
-        LIMIT 1000 
+        order by id
+        LIMIT #{pageBean.index},#{pageBean.pageSize}
+    </select>
+
+    <select id="queryById" resultMap="AllColumnMap">
+        SELECT p.id pid, p.name pname, p.subTitle, p.originalPrice, p.promotePrice, p.stock, p.cid cid, p.createDate,
+         pi.id piid, pi.type,
+         c.name cname
+         FROM product p,productimage pi,category c where p.id = #{id} and c.id = cid and p.id = pi.pid
     </select>
 
 <!--auto generated Code-->

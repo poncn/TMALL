@@ -18,7 +18,8 @@ public interface OrderDao {
 
     List<Order> select(@Param("pageBean") PageBean pageBean);
 
-
     int update(@Param("pojo") Order pojo);
+
+    Order queryById(@Param("id") long id);
 
 }

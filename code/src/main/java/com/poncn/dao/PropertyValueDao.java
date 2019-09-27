@@ -1,9 +1,10 @@
 package com.poncn.dao;
 
-import org.apache.ibatis.annotations.Param;
-import java.util.List;
 import com.poncn.entity.PropertyValue;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface PropertyValueDao {
@@ -16,4 +17,5 @@ public interface PropertyValueDao {
 
     int update(@Param("pojo") PropertyValue pojo);
 
+    List<PropertyValue> queryByPid(@Param("pid") long pid);
 }

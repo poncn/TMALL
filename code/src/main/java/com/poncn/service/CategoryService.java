@@ -18,20 +18,20 @@ public class CategoryService {
         return categoryDao.insert(pojo);
     }
 
-    public int insertList(List< Category> pojos){
-        return categoryDao.insertList(pojos);
-    }
-
-    public int getTotals(){
-        return categoryDao.getTotals();
-    }
-
     public PageBean<Category> select(int pageNumber,int pageSize){
         PageBean<Category> pageBean = new PageBean<Category>(pageNumber, pageSize);
-        pageBean.setPageCount(categoryDao.getTotals());
+        pageBean.setPageCount(categoryDao.getCounts());
         List<Category> list=categoryDao.select(pageBean);
         pageBean.setList(list);
         return pageBean;
+    }
+
+    public List<Category> queryCategoryProduct() {
+        return categoryDao.queryCategoryProduct();
+    }
+
+    public long queryCount() {
+        return categoryDao.queryCount();
     }
 
     public int update(Category pojo){

@@ -18,7 +18,7 @@
 
 <!--auto generated Code-->
     <insert id="insert">
-        INSERT INTO product_image
+        INSERT INTO productImage
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="pojo.id != null"> id, </if>
             <if test="pojo.pid != null"> pid, </if>
@@ -34,7 +34,7 @@
 
 <!--auto generated Code-->
     <insert id="insertList">
-        INSERT INTO product_image(
+        INSERT INTO productImage(
         <include refid="all_column"/>
         )VALUES
         <foreach collection="pojos" item="pojo" index="index" separator=",">
@@ -48,7 +48,7 @@
 
 <!--auto generated Code-->
     <update id="update">
-        UPDATE product_image
+        UPDATE productImage
         <set>
             <if test="pojo.id != null"> id = #{pojo.id}, </if>
             <if test="pojo.pid != null"> pid = #{pojo.pid}, </if>
@@ -60,7 +60,7 @@
 <!--auto generated Code-->
     <select id="select" resultMap="AllColumnMap">
         SELECT <include refid="all_column"/>
-        FROM product_image
+        FROM productImage
         <where>
             <if test="pojo.id != null"> AND id = #{pojo.id} </if>
             <if test="pojo.pid != null"> AND pid = #{pojo.pid} </if>
@@ -68,9 +68,12 @@
         </where>
         LIMIT 1000 
     </select>
+    <select id="queryByPid" resultType="long">
+        SELECT id FROM productImage where pid = #{pid} LIMIT 1
+    </select>
 
 <!--auto generated Code-->
     <delete id="delete">
-        DELETE FROM product_image where id = #{id}
+        DELETE FROM productImage where id = #{id}
     </delete>
 </mapper>

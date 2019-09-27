@@ -1,9 +1,10 @@
 package com.poncn.dao;
 
-import org.apache.ibatis.annotations.Param;
-import java.util.List;
 import com.poncn.entity.Review;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface ReviewDao {
@@ -16,4 +17,5 @@ public interface ReviewDao {
 
     int update(@Param("pojo") Review pojo);
 
+    List<Review> queryByPid(@Param("pid") long pid);
 }

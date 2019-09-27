@@ -34,6 +34,9 @@ nav.top {
 	font-weight: bold;
 }
 
+nav.top{
+	padding: 0 420px;
+}
 nav.top span {
 	margin-right: 20px;
 }
@@ -199,6 +202,7 @@ div.productsAsideCategorys a:hover {
 }
 
 div.productsAsideCategorys div.row {
+
 	margin: 20px 80px 0px 80px;
 }
 
@@ -245,8 +249,9 @@ img.catear {
 
 img.logo {
 	position: absolute;
-	left: 0px;
+	left: 400px;
 	top: 30px;
+
 /* 	z-index:-1; */
 }
 
@@ -680,12 +685,6 @@ div.productUnit div.productInfo {
 	border-top-color: #EEEEEE;
 }
 
-img.simpleLogo {
-	position: absolute;
-	left: 10px;
-	top: 50px;
-	width: 140px;
-}
 
 div.simpleSearchDiv {
 	background-color: #C40000;
@@ -1025,7 +1024,8 @@ span.productReviewTopReviewLinkNumber {
 }
 
 div.productDetailImagesPart img {
-	display: block; margin 20px 0px;
+	display: block;
+	margin: 20px 0px;
 	width: 790px;
 }
 
@@ -1610,7 +1610,6 @@ div.cartFoot button {
 	background-color: #AAAAAA;
 	border: 0px solid #AAAAAA;
 	color: white;
-	height: height%;
 	width: 120px;
 	height: 50px;
 	font-size: 20px;
