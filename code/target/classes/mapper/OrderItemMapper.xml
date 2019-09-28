@@ -54,19 +54,19 @@
     <insert id="insert">
         INSERT INTO orderitem
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="pojo.id != null"> id, </if>
-            <if test="pojo.pid != null"> pid, </if>
-            <if test="pojo.oid != null"> oid, </if>
-            <if test="pojo.uid != null"> uid, </if>
-            <if test="pojo.number != null"> number, </if>
+            <if test="pojo.id != 0"> id, </if>
+            <if test="pojo.pid != 0"> pid, </if>
+            <if test="pojo.oid != 0"> oid, </if>
+            <if test="pojo.uid != 0"> uid, </if>
+            <if test="pojo.number != 0"> number, </if>
         </trim>
         VALUES
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="pojo.id != null"> #{pojo.id}, </if>
-            <if test="pojo.pid != null"> #{pojo.pid}, </if>
-            <if test="pojo.oid != null"> #{pojo.oid}, </if>
-            <if test="pojo.uid != null"> #{pojo.uid}, </if>
-            <if test="pojo.number != null"> #{pojo.number}, </if>
+            <if test="pojo.id != 0"> #{pojo.id}, </if>
+            <if test="pojo.pid != 0"> #{pojo.pid}, </if>
+            <if test="pojo.oid != 0"> #{pojo.oid}, </if>
+            <if test="pojo.uid != 0"> #{pojo.uid}, </if>
+            <if test="pojo.number != 0"> #{pojo.number}, </if>
         </trim>
     </insert>
 
@@ -117,7 +117,8 @@
          select o.*,p.*,oi.* from `order` o,product p,orderitem oi where oi.uid =#{uid} and oi.oid=o.id and oi.pid=p.id
     </select>
     <select id="queryByCart" resultMap="AllColumnMap">
-         select o.*,p.*,oi.* from `order` o,product p,orderitem oi where oi.uid =#{uid} and oi.oid=o.id and oi.pid=p.id and o.status='cart'
+       select p.name, p.subTitle, p.originalPrice, p.promotePrice, p.stock, p.cid, p.createDate,oi.id, oi.pid, oi.oid, oi.uid, oi.number from product p,orderitem oi where oi.uid =#{uid} and oid IS NULL and oi.pid = p.id
+
     </select>
 
 

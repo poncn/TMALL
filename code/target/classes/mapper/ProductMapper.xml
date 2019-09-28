@@ -41,12 +41,12 @@
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="pojo.id != null"> id, </if>
             <if test="pojo.name != null"> name, </if>
-            <if test="pojo.subTitle != null"> subTitle, </if>
-            <if test="pojo.originalPrice != null"> originalPrice, </if>
-            <if test="pojo.promotePrice != null"> promotePrice, </if>
+            <if test="pojo.subTitle != null">subTitle,</if>
+            <if test="pojo.originalPrice != null">originalPrice,</if>
+            <if test="pojo.promotePrice != null">promotePrice,</if>
             <if test="pojo.stock != null"> stock, </if>
             <if test="pojo.cid != null"> cid, </if>
-            <if test="pojo.createDate != null"> createDate, </if>
+            <if test="pojo.createDate != null">createDate,</if>
         </trim>
         VALUES
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -86,12 +86,12 @@
         <set>
             <if test="pojo.id != null"> id = #{pojo.id}, </if>
             <if test="pojo.name != null"> name = #{pojo.name}, </if>
-            <if test="pojo.subTitle != null"> subTitle = #{pojo.subTitle}, </if>
-            <if test="pojo.originalPrice != null"> originalPrice = #{pojo.originalPrice}, </if>
-            <if test="pojo.promotePrice != null"> promotePrice = #{pojo.promotePrice}, </if>
+            <if test="pojo.subTitle != null">subTitle = #{pojo.subTitle},</if>
+            <if test="pojo.originalPrice != null">originalPrice = #{pojo.originalPrice},</if>
+            <if test="pojo.promotePrice != null">promotePrice = #{pojo.promotePrice},</if>
             <if test="pojo.stock != null"> stock = #{pojo.stock}, </if>
             <if test="pojo.cid != null"> cid = #{pojo.cid}, </if>
-            <if test="pojo.createDate != null"> createDate = #{pojo.createDate} </if>
+            <if test="pojo.createDate != null">createDate = #{pojo.createDate}</if>
         </set>
          WHERE id = #{pojo.id}
     </update>
@@ -105,7 +105,7 @@
     <select id="select" resultMap="AllColumnMap">
         SELECT * FROM pi
         <where>
-            <if test="pageBean.t.cid != null"> AND cid = #{pageBean.t.cid} </if>
+            <if test="pageBean.t.cid != null">AND cid = #{pageBean.t.cid}</if>
         </where>
         order by id
         LIMIT #{pageBean.index},#{pageBean.pageSize}

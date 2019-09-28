@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="java.util.*"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@include file="../include/admin/adminHeader.jsp"%>
@@ -44,10 +44,13 @@
                     <td><img height="40px" src="${pageContext.request.contextPath}/img/category/${c.id}.jpg"></td>
                     <td>${c.name}</td>
 
-                    <td><a href="adminPropertyList?cid=${c.id}"><span class="glyphicon glyphicon-th-list"></span></a></td>
-                    <td><a href="adminProductList?cid=${c.id}"><span class="glyphicon glyphicon-shopping-cart"></span></a></td>
+                    <td><a href="adminPropertyList?cid=${c.id}"><span class="glyphicon glyphicon-th-list"></span></a>
+                    </td>
+                    <td><a href="adminProductList?cid=${c.id}"><span
+                            class="glyphicon glyphicon-shopping-cart"></span></a></td>
                     <td><a href="adminCategoryEdit?id=${c.id}"><span class="glyphicon glyphicon-edit"></span></a></td>
-                    <td><a deleteLink="true" href="adminCategoryDelete?id=${c.id}"><span class="   glyphicon glyphicon-trash"></span></a></td>
+                    <td><a deleteLink="true" href="adminCategoryDelete?id=${c.id}"><span
+                            class="   glyphicon glyphicon-trash"></span></a></td>
 
                 </tr>
             </c:forEach>

@@ -65,7 +65,7 @@
     <select id="select" resultMap="AllColumnMap">
         SELECT * FROM property
         <where>
-            <if test="pageBean.t.cid != null"> AND cid = #{pageBean.t.cid} </if>
+            <if test="pageBean.t.cid != null">AND cid = #{pageBean.t.cid}</if>
         </where>
         order by id
         LIMIT #{pageBean.index},#{pageBean.pageSize}

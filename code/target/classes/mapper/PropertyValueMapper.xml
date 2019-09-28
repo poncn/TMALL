@@ -85,7 +85,7 @@
     </select>
 
 
-<!--auto generated Code-->
+    <!--auto generated Code-->
     <delete id="delete">
         DELETE FROM propertyvalue where id = #{id}
     </delete>

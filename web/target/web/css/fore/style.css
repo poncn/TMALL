@@ -34,8 +34,8 @@ nav.top {
 	font-weight: bold;
 }
 
-nav.top{
-	padding: 0 420px;
+nav.top {
+    padding: 0 420px;
 }
 nav.top span {
 	margin-right: 20px;
@@ -249,10 +249,10 @@ img.catear {
 
 img.logo {
 	position: absolute;
-	left: 400px;
+    left: 400px;
 	top: 30px;
 
-/* 	z-index:-1; */
+    /* 	z-index:-1; */
 }
 
 div.homepageCategoryProducts {
@@ -1024,8 +1024,8 @@ span.productReviewTopReviewLinkNumber {
 }
 
 div.productDetailImagesPart img {
-	display: block;
-	margin: 20px 0px;
+    display: block;
+    margin: 20px 0px;
 	width: 790px;
 }
 

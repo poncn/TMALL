@@ -17,18 +17,18 @@ $(function(){
 </script>
 <c:forEach items="${cs}" var="c">
 	<div cid="${c.id}" class="productsAsideCategorys">
-		<div class="row show1" style="display: flex;flex-flow: row wrap;">
-			<c:forEach items="${c.products}" var="p">
-				<c:if test="${!empty p.subTitle}">
-					<c:forEach items="${fn:split(p.subTitle, ' ')}" var="title" varStatus="st">
-						<a href="product/foreproduct?pid=${p.id}" style="width: 100px;height: 50px;">
-							${title}
+        <div class="row show1" style="display: flex;flex-flow: row wrap;">
+            <c:forEach items="${c.products}" var="p">
+                <c:if test="${!empty p.subTitle}">
+                    <c:forEach items="${fn:split(p.subTitle, ' ')}" var="title" varStatus="st">
+                        <a href="${pageContext.request.contextPath}/product/foreproduct?pid=${p.id}" style="width: 100px;height: 50px;">
+                            ${title}
 						</a>
-					</c:forEach>
-				</c:if>
-			</c:forEach>
-			<div class="seperator"></div>
-		</div>
-	</div>
+                    </c:forEach>
+                </c:if>
+            </c:forEach>
+            <div class="seperator"></div>
+        </div>
+    </div>
 </c:forEach>
 	

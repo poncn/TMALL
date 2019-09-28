@@ -17,7 +17,7 @@ public class BoughtInterceptor implements HandlerInterceptor {
         if (user != null) {
             return true;
         } else {
-            response.sendRedirect(request.getContextPath() + "/loginPage");
+            response.sendRedirect(request.getContextPath() + "/top/loginPage");
             return false;
         }
     }

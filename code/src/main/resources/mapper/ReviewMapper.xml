@@ -4,7 +4,7 @@
 
 <!--auto generated Code-->
     <resultMap id="AllColumnMap" type="com.poncn.entity.Review">
-        <id column="id" property="id"/>
+        <id column="rid" property="id"/>
         <result column="content" property="content"/>
         <result column="pid" property="pid"/>
         <result column="createDate" property="createDate"/>
@@ -87,7 +87,7 @@
     </select>
 
     <select id="queryByPid" resultMap="AllColumnMap">
-        SELECT * FROM review,user where pid = #{pid}
+        SELECT r.id rid, r.content, r.uid, r.pid, r.createDate ,u.name, u.password FROM review r,user u where r.uid=u.id and  pid = #{pid}
     </select>
 
 <!--auto generated Code-->

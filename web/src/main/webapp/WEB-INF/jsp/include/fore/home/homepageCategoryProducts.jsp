@@ -21,9 +21,11 @@
 				<c:forEach items="${c.products}" var="p" varStatus="st">
 					<c:if test="${st.count<=5}">
 						<div class="productItem" >
-                            <a href="product/foreproduct?pid=${p.id}"><img width="100px"
-                                                                           src="${pageContext.request.contextPath}/img/productSingle_middle/${p.productImg}.jpg"></a>
-                            <a class="productItemDescLink" href="product/foreproduct?pid=${p.id}">
+                            <a href="${pageContext.request.contextPath}/product/foreproduct?pid=${p.id}"><img
+                                    width="100px"
+                                    src="${pageContext.request.contextPath}/img/productSingle_middle/${p.productImg}.jpg"></a>
+                            <a class="productItemDescLink"
+                               href="${pageContext.request.contextPath}/product/foreproduct?pid=${p.id}">
 								<span class="productItemDesc">[热销]
 								${fn:substring(p.name, 0, 20)}
 								</span>

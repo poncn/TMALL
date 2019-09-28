@@ -17,29 +17,29 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <img class="carousel carouselImage" src="${pageContext.request.contextPath}/img/lunbo/1.jpg" >
+        <img class="carousel carouselImage" src="${pageContext.request.contextPath}/img/lunbo/1.jpg">
     </div>
     <div class="item">
-      <img  class="carouselImage" src="${pageContext.request.contextPath}/img/lunbo/2.jpg" >
+        <img class="carouselImage" src="${pageContext.request.contextPath}/img/lunbo/2.jpg">
     </div>
     <div class="item">
-		<img  class="carouselImage" src="${pageContext.request.contextPath}/img/lunbo/3.jpg" >
+        <img class="carouselImage" src="${pageContext.request.contextPath}/img/lunbo/3.jpg">
     </div>
 
     <div class="item">
-        <img  class="carouselImage" src="${pageContext.request.contextPath}/img/lunbo/4.jpg" >
+        <img class="carouselImage" src="${pageContext.request.contextPath}/img/lunbo/4.jpg">
     </div>
 
   </div>
 
-<!--   Controls -->
-<!--   <a class="left carousel-control" href="#carousel-of-product" role="button" data-slide="prev">-->
-<!--     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>-->
+    <!--   Controls -->
+    <!--   <a class="left carousel-control" href="#carousel-of-product" role="button" data-slide="prev">-->
+    <!--     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>-->
 
-<!--   </a>-->
-<!--   <a class="right carousel-control" href="#carousel-of-product" role="button" data-slide="next">-->
-<!--     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>-->
+    <!--   </a>-->
+    <!--   <a class="right carousel-control" href="#carousel-of-product" role="button" data-slide="next">-->
+    <!--     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>-->
 
-<!--   </a>-->
+    <!--   </a>-->
 
 </div>	

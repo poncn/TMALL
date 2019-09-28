@@ -21,7 +21,8 @@ $(function(){
             <c:forEach items="${c.products}" var="p">
                 <c:if test="${!empty p.subTitle}">
                     <c:forEach items="${fn:split(p.subTitle, ' ')}" var="title" varStatus="st">
-                        <a href="product/foreproduct?pid=${p.id}" style="width: 100px;height: 50px;">
+                        <a href="${pageContext.request.contextPath}/product/foreproduct?pid=${p.id}"
+                           style="width: 100px;height: 50px;">
                                 ${title}
 						</a>
                     </c:forEach>

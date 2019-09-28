@@ -61,17 +61,19 @@
 
     <!--auto generated Code-->
     <select id="select" resultMap="AllColumnMap">
-        SELECT <include refid="all_column"/>
-         FROM user order by id
+        SELECT
+        <include refid="all_column"/>
+        FROM user order by id
         LIMIT #{pageBean.index},#{pageBean.pageSize}
     </select>
 
     <select id="queryByName" resultMap="AllColumnMap">
-    SELECT <include refid="all_column"/>
-    FROM user
+        SELECT
+        <include refid="all_column"/>
+        FROM user
         <where>
-            <if test="pojo.name != null"> AND name = #{pojo.name} </if>
-            <if test="pojo.password != null"> AND password = #{pojo.password} </if>
+            <if test="pojo.name != null">AND name = #{pojo.name}</if>
+            <if test="pojo.password != null">AND password = #{pojo.password}</if>
         </where>
     </select>
 

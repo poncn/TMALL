@@ -4,7 +4,8 @@
 
 <title>模仿天猫官网 ${p.name}</title>
 <div class="categoryPictureInProductPageDiv">
-	<img class="categoryPictureInProductPage" src="${pageContext.request.contextPath}/img/category/${p.category.id}.jpg">
+	<img class="categoryPictureInProductPage"
+		 src="${pageContext.request.contextPath}/img/category/${p.category.id}.jpg">
 </div>
 
 <div class="productPageDiv">

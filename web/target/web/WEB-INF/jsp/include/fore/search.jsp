@@ -2,8 +2,8 @@
 		 pageEncoding="UTF-8" isELIgnored="false"%>
 
 
-<a  href="${pageContext.request.contextPath}/index">
-	<img id="logo" src="${pageContext.request.contextPath}/img/site/logo.gif" class="logo">
+<a href="${pageContext.request.contextPath}/index">
+    <img id="logo" src="${pageContext.request.contextPath}/img/site/logo.gif" class="logo">
 </a>
 <form action="foresearch" method="post" >
 	<div class="searchDiv">

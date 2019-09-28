@@ -29,14 +29,11 @@ public class CartController {
         User user = (User) session.getAttribute("user");
         long id = user.getId();
         List<OrderItem> oi = orderItemService.queryByCart(id);
-        double price = 0.0;
         for (OrderItem o : oi) {
             for (Product p : o.getOIProduct()) {
-                price += p.getPromotePrice();
                 long productImg = productImageService.queryByPid(p.getId());
                 p.setProductImg(productImg);
             }
-            o.setTotalPrice(price);
         }
         map.put("oi", oi);
         return "/fore/cart";

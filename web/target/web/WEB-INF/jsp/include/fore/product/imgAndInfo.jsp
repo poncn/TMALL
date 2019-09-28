@@ -41,19 +41,18 @@ $(function(){
                 function(result){
                     if("success"==result){
                         var pid = ${p.id};
-                        var num= $(".productNumberSetting").val();
+                        var number= $(".productNumberSetting").val();
                         var addCartpage = "foreaddCart";
                         $.get(
                                 addCartpage,
-                                {"pid":pid,"num":num},
+                                {"pid":pid,"number":number},
                                 function(result){
                                     if("success"==result){
                                         $(".addCartButton").html("已加入购物车");
                                         $(".addCartButton").attr("disabled","disabled");
-                                        $(".addCartButton").css("background-color","lightgray")
-                                        $(".addCartButton").css("border-color","lightgray")
+                                        $(".addCartButton").css("background-color","lightgray");
+                                        $(".addCartButton").css("border-color","lightgray");
                                         $(".addCartButton").css("color","black")
-
                                     }
                                     else{
 
@@ -73,6 +72,7 @@ $(function(){
         $.get(
                 page,
                 function(result){
+                    console.log(result);
                     if("success"==result){
                         var num = $(".productNumberSetting").val();
                         location.href= $(".buyLink").attr("href")+"&num="+num;
@@ -100,10 +100,10 @@ $(function(){
                 page,
                 {"name":name,"password":password},
                 function(result){
-                    if("success"==result){
+                    console.log(result);
+                    if ("success" == result) {
                         location.reload();
-                    }
-                    else{
+                    } else {
                         $("span.errorMessage").html("账号密码错误");
                         $("div.loginErrorMessageDiv").show();
                     }
@@ -134,7 +134,43 @@ $(function(){
 });
  
 </script>
- 
+<div class="modal  in" id="loginModal" tabindex="-1" role="dialog" style="display: none;">
+    <div class="modal-dialog loginDivInProductPageModalDiv">
+        <div class="modal-content">
+            <div class="loginDivInProductPage">
+                <div class="loginErrorMessageDiv">
+                    <div class="alert alert-danger">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+                        <span class="errorMessage"></span>
+                    </div>
+                </div>
+
+                <div class="login_acount_text">账户登录</div>
+                <div class="loginInput ">
+							<span class="loginInputIcon ">
+								<span class=" glyphicon glyphicon-user"></span>
+							</span>
+                    <input id="name" name="name" placeholder="手机/会员名/邮箱" type="text">
+                </div>
+
+                <div class="loginInput ">
+							<span class="loginInputIcon ">
+								<span class=" glyphicon glyphicon-lock"></span>
+							</span>
+                    <input id="password" name="password" type="password" placeholder="密码">
+                </div>
+                <div>
+                    <a href="#nowhere">忘记登录密码</a>
+                    <a href="register.jsp" class="pull-right">免费注册</a>
+                </div>
+                <div style="margin-top:20px">
+                    <button class="btn btn-block redButton loginSubmitButton" type="submit">登录</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="imgAndInfo">
  
     <div class="imgInimgAndInfo">
@@ -142,13 +178,14 @@ $(function(){
         <div class="smallImageDiv">
             <c:forEach items="${p.productImage}" var="pi">
                 <c:if test="${pi.type=='type_single'}">
-                    <img src="${pageContext.request.contextPath}/img/productSingle_small/${pi.id}.jpg" bigImageURL="${pageContext.request.contextPath}/img/productSingle/${pi.id}.jpg" class="smallImage">
+                    <img src="${pageContext.request.contextPath}/img/productSingle_small/${pi.id}.jpg"
+                         bigImageURL="${pageContext.request.contextPath}/img/productSingle/${pi.id}.jpg"
+                         class="smallImage">
                 </c:if>
             </c:forEach>
         </div>
         <div class="img4load hidden" ></div>
     </div>
-
 
     <div class="infoInimgAndInfo">
          
@@ -170,7 +207,8 @@ $(function(){
 
 
             <div class="productPriceDiv">
-                <div class="gouwujuanDiv"><img height="16px" src="${pageContext.request.contextPath}/img/site/gouwujuan.png">
+                <div class="gouwujuanDiv"><img height="16px"
+                                               src="${pageContext.request.contextPath}/img/site/gouwujuan.png">
                 <span> 全天猫实物商品通用</span>
                  
                 </div>
@@ -193,7 +231,7 @@ $(function(){
         </div>
 
         <div class="productSaleAndReviewNumber">
-       <%--     <div>销量 <span class="redColor boldWord"> ${p.saleCount }</span></div>  --%>
+            <%--     <div>销量 <span class="redColor boldWord"> ${p.saleCount }</span></div>  --%>
             <div>累计评价 <span class="redColor boldWord"> ${p.reviewCount}</span></div>    
         </div>
         <div class="productNumber">
@@ -229,14 +267,13 @@ $(function(){
                 <a href="#nowhere">赠运费险</a>
                 <a href="#nowhere">七天无理由退换</a>
             </span>
-        </div>    
-         
+        </div>
+
         <div class="buyDiv">
-            <a class="buyLink" href="forebuyone?pid=${p.id}"><button class="buyButton">立即购买</button></a>
+            <a class="buyLink" href="${pageContext.request.contextPath}/product/forebuyone?pid=${p.id}"><button class="buyButton">立即购买</button></a>
             <a href="#nowhere" class="addCartLink"><button class="addCartButton"><span class="glyphicon glyphicon-shopping-cart"></span>加入购物车</button></a>
         </div>
     </div>
      
     <div style="clear:both"></div>
-     
 </div>

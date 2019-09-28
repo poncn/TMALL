@@ -20,9 +20,9 @@ public class BoughtController {
 
     @Resource
     private OrderItemService orderItemService;
+
     @Resource
     private ProductImageService productImageService;
-
 
     @RequestMapping("/forebought")
     public String forebought(HttpServletRequest request, Map<String, Object> map) {
@@ -42,4 +42,6 @@ public class BoughtController {
         map.put("oi", oi);
         return "/fore/bought";
     }
+
+
 }

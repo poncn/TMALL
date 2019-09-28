@@ -10,8 +10,8 @@ public class Product {
   private long id;
   private String name;
   private String subTitle;
-  private double originalPrice;
-  private double promotePrice;
+  private float originalPrice;
+  private float promotePrice;
   private long stock;
   private long cid;
   private Category category;

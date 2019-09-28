@@ -6,10 +6,11 @@
 		 pageEncoding="UTF-8" isELIgnored="false"%>
 
 <div style="display: flex;align-items: center;">
-	<a href="${pageContext.request.contextPath}/index">
-		<img id="simpleLogo" style="margin-left: 420px" src="${pageContext.request.contextPath}/img/site/simpleLogo.png">
+    <a href="${pageContext.request.contextPath}/index">
+        <img id="simpleLogo" style="margin-left: 420px"
+             src="${pageContext.request.contextPath}/img/site/simpleLogo.png">
 	</a>
-	<form style="margin:30px 0 0 500px" action="foresearch" method="post" >
+    <form style="margin:30px 0 0 500px" action="foresearch" method="post">
 		<div class="simpleSearchDiv pull-right">
 			<input type="text" placeholder="平衡车 原汁机"  value="${param.keyword}" name="keyword">
 			<button class="searchButton" type="submit">搜天猫</button>

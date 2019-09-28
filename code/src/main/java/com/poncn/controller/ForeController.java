@@ -33,4 +33,6 @@ public class ForeController {
         map.put("categorycount", categorycount);
         return "/fore/home";
     }
+
+
 }
